@@ -4,7 +4,8 @@ export function decodeHTML(text: string): string {
       '&#039;': "'",
       '&amp;': '&',
       '&lt;': '<',
-      '&gt;': '>'
+      '&gt;': '>',
+      '&eacute;': 'e',
     };
   
     return text.replace(/&quot;|&#039;|&amp;|&lt;|&gt;/g, (match) => {
