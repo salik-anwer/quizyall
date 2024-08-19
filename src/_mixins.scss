@@ -3,7 +3,7 @@
 @mixin option-btn-styles() {
     padding: 1rem;
     background-color: $option-bg-color;
-    color: $font-color;
+    color: darken($font-color, 33%);
     font-size: 1rem;
     border: none;
     border-radius: 0.5rem;
@@ -12,18 +12,23 @@
   
     &:hover {
       background-color: $option-hover-color;
+      color: $font-color;
+      
     }
   
     &.selected {
       background-color: $option-select-color; 
+      color: $font-color;
     }
   
     &.correct {
       background-color: $option-correct-color; 
+      color: $font-color;
     }
   
     &.wrong {
       background-color: $option-wrong-color;
+      color: $font-color;
     }
 }
 

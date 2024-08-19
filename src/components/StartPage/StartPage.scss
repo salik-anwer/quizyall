@@ -12,13 +12,19 @@
   padding: 1rem;
 }
 
-.title {
-  font-size: 2rem;
+.title-container{
+  display: flex;
+  gap: 1rem;
   margin-bottom: 2rem;
-  text-align: center;
+  .title {
+    font-size: 2.75rem;
+    text-align: center;
+    font-family: 'Bungee Spice', sans-serif;
+  }
 }
 
 .start-button {
+  margin-top: 0.5rem;
   @include btn-styles();
 }
 

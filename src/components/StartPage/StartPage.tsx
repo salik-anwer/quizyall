@@ -32,8 +32,10 @@ export const StartPage = () => {
 
   return (
     <div className="start-page-container">
-      <h1 className="title">Welcome to Quizyall</h1>
-      
+      <div className='title-container'>
+        <img src='/quiz.png' alt='logo' height={50} width={50}/>
+        <h1 className="title">Quizyall</h1>
+      </div>
       <div className="select-container">
         <label htmlFor="category-select">Select Category:</label>
         <select

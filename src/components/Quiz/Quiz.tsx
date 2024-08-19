@@ -72,7 +72,7 @@ export const Quiz: React.FC<QuizProps> = ({ onFinish }) => {
   return (
     <div className="quiz-container">
       <div className="timer">{timeLeft}</div>
-      <h2>Question {currentQuestionIndex + 1}</h2>
+      <h2 className='question-index'>Question {currentQuestionIndex + 1}</h2>
       <p className="question">{decodeHTML(currentQuestion.question)}</p>
       <div className="options">
         {currentQuestion.incorrect_answers
