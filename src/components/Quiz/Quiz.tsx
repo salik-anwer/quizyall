@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import './Quiz.scss'; 
 import { useQuizContext } from '../../hooks/useQuizContext';
 import { Spinner } from '../Spinner/Spinner';
-import { decodeHTML } from '../../utilities/decodeHTML';
 
 type QuizProps = {
   onFinish: () => void;
@@ -41,7 +40,7 @@ export const Quiz: React.FC<QuizProps> = ({ onFinish }) => {
       updateScore();
     }
     if(selectedAnswer) {
-      const response = {question: decodeHTML(currentQuestion.question), answer: decodeHTML(currentQuestion.correct_answer), response: decodeHTML(selectedAnswer)};
+      const response = {question: atob(currentQuestion.question), answer: atob(currentQuestion.correct_answer), response: atob(selectedAnswer)};
       updateResponses(response);
     }
   };
@@ -73,7 +72,7 @@ export const Quiz: React.FC<QuizProps> = ({ onFinish }) => {
     <div className="quiz-container">
       <div className="timer">{timeLeft}</div>
       <h2 className='question-index'>Question {currentQuestionIndex + 1}</h2>
-      <p className="question">{decodeHTML(currentQuestion.question)}</p>
+      <p className="question">{atob(currentQuestion.question)}</p>
       <div className="options">
         {currentQuestion.incorrect_answers
           .concat(currentQuestion.correct_answer)
@@ -85,7 +84,7 @@ export const Quiz: React.FC<QuizProps> = ({ onFinish }) => {
               className={getButtonClass(option)}
               disabled={isSubmitted}
             >
-              {decodeHTML(option)}
+              {atob(option)}
             </button>
           ))}
       </div>
