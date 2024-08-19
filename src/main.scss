@@ -1,0 +1,20 @@
+@import 'variables';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  background-color: $background-color;
+  color: $font-color;
+  font-family: 'Roboto', system-ui;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}

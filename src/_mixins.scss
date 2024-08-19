@@ -1,0 +1,79 @@
+@import 'variables';
+
+@mixin option-btn-styles() {
+    padding: 1rem;
+    background-color: $option-bg-color;
+    color: $font-color;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  
+    &:hover {
+      background-color: $option-hover-color;
+    }
+  
+    &.selected {
+      background-color: $option-select-color; 
+    }
+  
+    &.correct {
+      background-color: $option-correct-color; 
+    }
+  
+    &.wrong {
+      background-color: $option-wrong-color;
+    }
+}
+
+@mixin btn-styles() {
+    padding: 0.75rem 1.5rem;
+    background-color: $btn-bg-color;
+    color: $font-color;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.3s ease;
+  
+    &:hover {
+      background-color: $btn-hover-color;
+      transform: scale(1.05);
+    }
+  
+    &:active {
+      transform: scale(0.95);
+    }
+  
+    &:disabled {
+      background-color: $btn-disabled-color;
+      cursor: not-allowed;
+    }
+}
+
+@mixin select-styles() {
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 0.75rem;
+    font-size: 1rem;
+    background-color: $option-bg-color; 
+    color: $font-color;
+    border: 1px solid $option-bg-color;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: border-color 0.3s ease-in-out;
+
+    &:hover {
+      border-color: $option-hover-color;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $option-hover-color; 
+    }
+
+    option {
+      background-color: $option-bg-color; 
+      color: $font-color;
+      width: 100%;
+    }
+}

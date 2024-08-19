@@ -1,0 +1,63 @@
+@import '../../mixins';
+@import '../../variables';
+
+.start-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: $background-color; 
+  color: $font-color;
+  padding: 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.start-button {
+  @include btn-styles();
+}
+
+.select-container {
+  margin-bottom: 1.5rem;
+  width: 80%;
+  max-width: 300px;
+
+  select {
+    @include select-styles();
+  }
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .start-button {
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .select-container {
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .start-button {
+    font-size: 0.75rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .select-container {
+    width: 100%;
+  }
+}
