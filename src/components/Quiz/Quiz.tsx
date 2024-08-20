@@ -1,13 +1,9 @@
 import { useEffect, useState } from 'react';
-import './Quiz.scss'; 
-import { useQuizContext } from '../../hooks/useQuizContext';
 import { Spinner } from '../Spinner/Spinner';
+import { useQuizContext } from '../../hooks/useQuizContext';
+import './Quiz.scss'; 
 
-type QuizProps = {
-  onFinish: () => void;
-};
-
-export const Quiz: React.FC<QuizProps> = ({ onFinish }) => {
+export const Quiz = ({ onFinish }: {onFinish: ()=> void}) => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
@@ -36,12 +32,17 @@ export const Quiz: React.FC<QuizProps> = ({ onFinish }) => {
 
   const handleSubmit = () => {
     setIsSubmitted(true);
-    if (selectedAnswer === currentQuestion.correct_answer) {
-      updateScore();
-    }
+    
     if(selectedAnswer) {
-      const response = {question: atob(currentQuestion.question), answer: atob(currentQuestion.correct_answer), response: atob(selectedAnswer)};
+      const response = {
+        question: atob(currentQuestion.question), 
+        answer: atob(currentQuestion.correct_answer), 
+        response: atob(selectedAnswer)
+      };
       updateResponses(response);
+      if(selectedAnswer === currentQuestion.correct_answer) {
+        updateScore();
+      }
     }
   };
 

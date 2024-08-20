@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useQuizContext } from '../../hooks/useQuizContext';
-import './StartPage.scss'; 
 import { fetchCategories } from '../../utilities/fetchCategories';
 import { fetchQuestions } from '../../utilities/fetchQuestions';
+import './StartPage.scss'; 
 
-export const StartPage = () => {
-  const { updateQuestions, updateLoading, changeStep } = useQuizContext();
+export const StartPage = ({onStart} : {onStart: () => void}) => {
+  const { updateQuestions, updateLoading } = useQuizContext();
   const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard' | null>(null);
   const [category, setCategory] = useState<string | null>(null);
-  const [categories, setCategories] = useState<{id: string, name: string}[]>([]);
+  const [categories, setCategories] = useState<{id: number, name: string}[]>([]);
 
   useEffect(() => {
     (async () => {
@@ -19,7 +19,7 @@ export const StartPage = () => {
 
   const handleQuery = async () => {
     updateLoading(true);
-    changeStep('quiz');
+    onStart();
 
     const categoryQuery = category ? `&category=${category}` : '';
     const difficultyQuery = difficulty ? `&difficulty=${difficulty}` : '';

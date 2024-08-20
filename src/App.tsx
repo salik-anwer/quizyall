@@ -6,23 +6,24 @@ import { useQuizContext } from './hooks/useQuizContext';
 const App = () => {
   const {step, resetScore, changeStep, resetResponses } = useQuizContext();
 
-  const quitQuiz = () => {
-    resetResponses();
-    resetScore();
-    changeStep('start');
-  }
+  const startQuiz = () => changeStep('quiz');
   const finishQuiz = () => changeStep('result');
   const restartQuiz = () => {
     resetResponses();
     resetScore();
     changeStep('quiz');
   };
+  const endQuiz = () => {
+    resetResponses();
+    resetScore();
+    changeStep('start');
+  }
 
   return (
       <div className="app">
-        {step === 'start' && <StartPage/>}
+        {step === 'start' && <StartPage onStart = {startQuiz} />}
         {step === 'quiz' && <Quiz onFinish={finishQuiz} />}
-        {step === 'result' && <ResultPage onRestart={restartQuiz} onFinish={quitQuiz} />}
+        {step === 'result' && <ResultPage onRestart={restartQuiz} onFinish={endQuiz} />}
       </div>
   );
 };

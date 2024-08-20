@@ -1,6 +1,6 @@
 import React from 'react';
-import './ResultPage.scss';
 import { useQuizContext } from '../../hooks/useQuizContext';
+import './ResultPage.scss';
 
 type ResultPageProps = {
   onRestart: () => void;

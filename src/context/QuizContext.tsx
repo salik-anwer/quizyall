@@ -1,6 +1,6 @@
 import { createContext, useState, ReactNode } from 'react';
 
-interface Question {
+export interface Question {
   type: "boolean" | "multiple";
   difficulty: "easy" | "medium" | "hard";
   category: string;
@@ -40,7 +40,7 @@ const QuizContext = createContext<QuizContextProps | undefined>(undefined);
 const QuizContextProvider = ({ children }: {children: ReactNode}) => {
   const [questions, setQuestions] = useState<Question[]>([]);
   const [score, setScore] = useState<number>(0);
-  const [step, setStep] = useState<'start' | 'quiz' | 'result'>('start');
+  const [step, setStep] = useState<QuizStep>('start');
   const [responses, setResponses] = useState<UserResponse[]>([]);    
   const [error, setError] = useState<Error | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
