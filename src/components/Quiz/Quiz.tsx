@@ -11,16 +11,18 @@ export const Quiz = ({ onFinish }: {onFinish: ()=> void}) => {
   const { updateScore, updateResponses, questions, loading} = useQuizContext();
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prevTime) => prevTime > 0 ? prevTime - 1 : 0);
-    }, 1000);
+    if(!isSubmitted) {
+        const timer = setInterval(() => {
+        setTimeLeft((prevTime) => prevTime > 0 ? prevTime - 1 : 0);
+      }, 1000);
 
-    if (timeLeft === 0) {
-      handleNext();
+      if (timeLeft === 0) {
+        handleNext();
+      }
+
+      return () => clearInterval(timer);
     }
-
-    return () => clearInterval(timer);
-  }, [timeLeft]);
+  }, [timeLeft, isSubmitted]);
 
   useEffect(() => {
     setTimeLeft(60); 
